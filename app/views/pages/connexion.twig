@@ -1,0 +1,38 @@
+{% extends "layout.twig" %}
+{% block content %}
+    {% if flash.success %}
+        <div>
+            {{ flash.success }}
+        </div>
+    {% endif %}
+    {% if flash.error %}
+        <div>
+            {{ flash.error }}
+        </div>
+    {% endif %}
+    <div class="contact-title">
+        <h3 class="h3">Connexion</h3>
+    </div>
+    <form action="{{ path_for('connexion') }}" method="post" class="form">
+        {{ csrf() }}
+        <div class="{% if flash.errors.login %}has-error{% endif %}">
+            <label class="label" >Nom d'utilisateur</label> <br>
+            <input class="form-control-little" type="text" name="login" id="login" value="" required>
+            {% if flash.errors.login %}
+                <span class="help-block">{{ flash.errors.login }}</span>
+            {% endif %}
+        </div>
+        <div class="{% if flash.errors.mdp %}has-error{% endif %}">
+            <label class="label">Mot de passe</label> <br>
+            <input class="form-control-little" type="password" name="mdp" id="mdp" required>
+            {% if flash.errors.mdp %}
+                <span class="help-block">{{ flash.errors.mdp }}</span>
+            {% endif %}
+        </div>
+        <div>
+            <input class="btn-submit" type="submit" value="Valider"><br><br>
+
+            <a class="lienInscrip" href="inscription"> Vous n'avez pas de compte? Inscrivez-vous ici </a>
+        </div>
+    </form>
+{% endblock %}

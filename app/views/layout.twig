@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles/css/styles.css">
+</head>
+<body>
+    <div class="menu">
+        <nav class="navbar">
+            <a href="{{ path_for('home') }}">PortFolio</a>
+            <a href="{{ path_for('projet') }}">Projets</a>
+            <a href="{{ path_for('lienExterne') }}">Liens Externes</a>
+            <a href="{{ path_for('veille') }}">Veille Technologique</a> 
+            <a href="{{ path_for('contact') }}">Contact</a><br>
+        </nav>
+    </div>
+
+    <div class="sidenav">
+        {% if login|length > 1 %}
+            <a class="deconnexion" href="{{ path_for('deconnexion') }}">Déconnexion </a>
+            <a class="user" href="{{ path_for('monEspace') }}">Mon Espace</a>
+        {% else %}
+            <a class="connexion" href="{{ path_for('connexion') }}">Connexion</a>
+            <a class="inscription" href="{{ path_for('inscription') }}">Inscription</a>
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
