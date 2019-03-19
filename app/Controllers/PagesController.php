@@ -76,7 +76,7 @@ class PagesController extends Controller {
                 ->setSubject('Message de contact')
                 ->setFrom([$request->getParam('email') => $request->getParam('name')])
                 //Adresse mail cible
-                ->setTo('contact@test.fr')
+                ->setTo('ulku.umay@gmail.com')
                 ->setBody("un email vous a été envoyé :
             {$request->getParam('content')}");
             $this->mailer->send($message);
